@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECE SARL · Travaux, Études &amp; Expertise — Électromécanique, Énergie &amp; Sécurité</title>
+<meta name="description" content="ECE SARL (Energie Concept Engineering) — cabinet de travaux, études et expertise en électricité HTA/BT, hydraulique, plomberie, froid et climatisation, sécurité électronique et sécurité incendie.">
+
+<!-- Favicon (nouveau logo) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%230B121C'/%3E%3Cg transform='translate(0,30)'%3E%3Cpath d='M 60 290 L 135 80 L 200 175 L 265 80 L 340 290 Z' stroke='%23EDEFEA' stroke-width='18' fill='none'/%3E%3Cline x1='60' y1='290' x2='340' y2='290' stroke='%23EDEFEA' stroke-width='18'/%3E%3Ccircle cx='200' cy='190' r='75' stroke='%23EDEFEA' stroke-width='15' fill='none'/%3E%3Ccircle cx='200' cy='190' r='52' stroke='%23EDEFEA' stroke-width='15' fill='none'/%3E%3Cpath d='M 165 155 L 200 215 L 235 155 L 200 245' stroke='%23EDEFEA' stroke-width='15' fill='none'/%3E%3Cpath d='M 200 115 A 75 75 0 0 1 275 190' stroke='%23E3A75B' stroke-width='18' fill='none' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="ECE SARL — Travaux, Études &amp; Expertise">
+<meta property="og:description" content="Cabinet de travaux, études et expertise en électromécanique, énergie et sécurité du bâtiment — Dakar, Sénégal.">
+<meta property="og:locale" content="fr_SN">
+<meta property="og:site_name" content="ECE SARL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ECE SARL — Travaux, Études &amp; Expertise">
+<meta name="twitter:description" content="Électricité HTA/BT · Hydraulique · Plomberie · Froid &amp; Climatisation · Sécurité électronique · Sécurité incendie.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;600&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F2EFE9;
+    --bg-panel:#E7E2DA;
+    --bg-panel-2:#DBD5CC;
+    --ink:#1A1A1A;
+    --sub:#5A5550;
+    --line: rgba(26,26,26,0.15);
+    --line-strong: rgba(26,26,26,0.28);
+    --navy:#1A1A1A;
+    --navy-soft:#2A2A2A;
+    --navy-line: rgba(243,240,232,0.18);
+    --on-navy:#F3F0E8;
+    --on-navy-sub:#B7C1BB;
+    --accent:#D9452A;
+    --accent-ink:#A83A1F;
+    --accent-on-navy:#F06B50;
+    --ok:#A83A1F;
+    --radius:3px;
+    --maxw:1180px;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono:'DM Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#111111; --bg-panel:#1D1D1D; --bg-panel-2:#292929;
+      --ink:#F2EFE9; --sub:#B7B0A9;
+      --line: rgba(243,240,232,0.14); --line-strong: rgba(243,240,232,0.26);
+      --navy:#0C0C0C; --navy-soft:#1A1A1A; --navy-line: rgba(242,239,233,0.16);
+      --on-navy:#F2EFE9; --on-navy-sub:#B7B0A9;
+      --accent:#D9452A; --accent-ink:#F06B50; --accent-on-navy:#F06B50;
+      --ok:#F06B50;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#111111; --bg-panel:#1D1D1D; --bg-panel-2:#292929;
+    --ink:#F2EFE9; --sub:#B7B0A9;
+    --line: rgba(243,240,232,0.14); --line-strong: rgba(243,240,232,0.26);
+    --navy:#0C0C0C; --navy-soft:#1A1A1A; --navy-line: rgba(242,239,233,0.16);
+    --on-navy:#F2EFE9; --on-navy-sub:#B7B0A9;
+    --accent:#D9452A; --accent-ink:#F06B50; --accent-on-navy:#F06B50;
+    --ok:#F06B50;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body.no-scroll{overflow:hidden;}
+  @keyframes rise-in{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @keyframes hero-in{
+    from{opacity:0; transform:translateY(12px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  #accueil .hero-logo{animation:hero-in .8s ease-out both;}
+  #accueil .hero-desc{animation:hero-in .8s .12s ease-out both;}
+  #accueil .hero-ctas{animation:hero-in .8s .22s ease-out both;}
+  #accueil .pill-row{animation:hero-in .8s .32s ease-out both;}
+  #accueil .hero-aside{animation:hero-in .8s .18s ease-out both;}
+  body.motion-ready .reveal-item{opacity:0; transform:translateY(18px);}
+  body.motion-ready .reveal-item.is-visible{animation:rise-in .7s var(--reveal-delay, 0ms) ease-out both;}
+  img,svg{max-width:100%; display:block;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  @media (max-width:640px){ .wrap{padding:0 18px;} }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--accent); color:#fff;
+    padding:10px 16px; z-index:1000; font-family:var(--font-mono); font-size:13px;
+  }
+  .skip-link:focus{left:12px; top:12px;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  h1,h2,h3,h4{font-family:var(--font-display); font-weight:600; margin:0; letter-spacing:-0.01em;}
+  p{margin:0;}
+  .mono{font-family:var(--font-mono);}
+
+  .h2{font-size:clamp(28px,4vw,42px); line-height:1.15;}
+  .h3{font-size:clamp(20px,2.4vw,26px); line-height:1.25;}
+  .lede{font-size:clamp(17px,2vw,20px); line-height:1.55; color:var(--sub); max-width:640px;}
+
+  .section-head{
+    display:flex; gap:24px; justify-content:space-between; align-items:flex-end;
+    margin-bottom:44px; flex-wrap:wrap;
+  }
+  .section-num{
+    font-family:var(--font-mono); font-size:13px; color:var(--accent-ink);
+    display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .section-num .tick{width:22px; height:1px; background:var(--accent);}
+
+  section{padding:96px 0; position:relative; border-bottom:1px solid var(--line); scroll-margin-top:110px;}
+  section:last-of-type{border-bottom:none;}
+  @media (max-width:640px){ section{padding:64px 0;} }
+
+  .tech-card{
+    position:relative; background:var(--bg-panel); border:1px solid var(--line); padding:28px;
+  }
+  .tech-card::before,.tech-card::after{
+    content:""; position:absolute; width:11px; height:11px; pointer-events:none;
+  }
+  .tech-card::before{ top:-1px; left:-1px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+  .tech-card::after{ bottom:-1px; right:-1px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); }
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .topbar{
+    font-family:var(--font-mono); font-size:12px; color:var(--sub);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; height:34px; gap:16px;}
+  .topbar a{text-decoration:none;}
+  .topbar a:hover{color:var(--accent-ink);}
+  .topbar-links{display:flex; gap:18px; align-items:center;}
+  .topbar-right{display:flex; align-items:center; gap:16px;}
+  @media (max-width:760px){ .topbar{display:none;} }
+
+  .theme-toggle{
+    width:26px; height:26px; border:1px solid var(--line-strong); background:transparent;
+    display:inline-flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; color:var(--sub);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .theme-toggle:hover{border-color:var(--accent); color:var(--accent-ink);}
+  .theme-toggle svg{width:14px; height:14px;}
+  .theme-toggle .icon-sun{display:none;}
+  .theme-toggle .icon-moon{display:block;}
+  :root[data-theme="dark"] .theme-toggle .icon-sun{display:block;}
+  :root[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun{display:block;}
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon{display:none;}
+  }
+
+  .navrow{height:72px; display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand-mark{
+    width:58px; height:auto; flex:none;
+    display:block;
+  }
+  :root[data-theme="dark"] .brand-mark{filter:brightness(0) invert(1);}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .brand-mark{filter:brightness(0) invert(1);}
+  }
+  .brand-text{display:none;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.1;}
+  .brand-name{font-family:var(--font-display); font-weight:700; font-size:17px; letter-spacing:0.02em;}
+  .brand-sub{font-family:var(--font-mono); font-size:10px; color:var(--sub); letter-spacing:0.02em;}
+
+  nav.primary{display:flex; align-items:center; gap:30px;}
+  nav.primary ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav.primary a{text-decoration:none; font-size:14.5px; font-weight:500; color:var(--sub); position:relative; padding:4px 0;}
+  nav.primary a .idx{font-family:var(--font-mono); font-size:11px; color:var(--accent-ink); margin-right:6px;}
+  nav.primary a:hover, nav.primary a.active{color:var(--ink);}
+  nav.primary a.active::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--accent);}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-weight:600;
+    font-size:14px; padding:11px 20px; border:1px solid transparent; text-decoration:none; cursor:pointer;
+    background:none;
+  }
+  .btn-primary{background:var(--ink); color:var(--bg);}
+  :root[data-theme="dark"] .btn-primary{color:var(--navy);}
+  .btn-primary:hover{background:var(--accent-ink); color:#fff;}
+  .btn-ghost{border-color:var(--line-strong); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent-ink);}
+  .btn-on-navy{border-color:var(--navy-line); color:var(--on-navy);}
+  .btn-on-navy:hover{border-color:var(--accent-on-navy); color:var(--accent-on-navy);}
+  .btn[disabled]{opacity:.5; cursor:not-allowed;}
+
+  .burger{
+    display:none; width:34px; height:34px; border:1px solid var(--line-strong);
+    align-items:center; justify-content:center; background:none; cursor:pointer; color:var(--ink);
+  }
+  .burger span{display:block; width:16px; height:2px; background:currentColor; position:relative;}
+  .burger span::before, .burger span::after{
+    content:""; display:block; width:16px; height:2px; background:currentColor;
+    position:absolute; transition:transform .2s ease;
+  }
+  .burger span::before{top:-5px;}
+  .burger span::after{top:5px;}
+  .burger[aria-expanded="true"] span{background:transparent;}
+  .burger[aria-expanded="true"] span::before{transform:translateY(5px) rotate(45deg);}
+  .burger[aria-expanded="true"] span::after{transform:translateY(-5px) rotate(-45deg);}
+  @media (max-width:900px){
+    nav.primary ul, .navrow .btn-primary{display:none;}
+    .burger{display:flex;}
+  }
+
+  .mobile-panel{
+    position:fixed; inset:72px 0 0 0; background:var(--bg); z-index:99;
+    transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
+    overflow:auto;
+  }
+  .mobile-panel.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .mobile-panel ul{list-style:none; margin:0; padding:24px 0;}
+  .mobile-panel a{display:flex; gap:14px; align-items:baseline; text-decoration:none; color:var(--ink); font-family:var(--font-display); font-size:22px; padding:16px 28px; border-bottom:1px solid var(--line);}
+  .mobile-panel .idx{font-family:var(--font-mono); font-size:13px; color:var(--accent-ink);}
+  .mobile-panel .mp-contact{padding:20px 28px; font-family:var(--font-mono); font-size:13px; color:var(--sub); display:flex; flex-direction:column; gap:6px;}
+
+  .rail{
+    position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:60;
+    display:flex; flex-direction:column; gap:16px; align-items:flex-end;
+  }
+  .rail a{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--sub); font-family:var(--font-mono); font-size:11px; cursor:pointer;}
+  .rail .dot{width:7px; height:7px; border:1px solid var(--line-strong); background:var(--bg); flex:none; transition:background .2s ease, border-color .2s ease;}
+  .rail .lab{opacity:0; transform:translateX(6px); transition:opacity .15s ease, transform .15s ease; white-space:nowrap; background:var(--bg-panel); border:1px solid var(--line); padding:3px 8px;}
+  .rail a:hover .lab{opacity:1; transform:translateX(0);}
+  .rail a.active .dot{background:var(--accent); border-color:var(--accent);}
+  .rail a.active{color:var(--ink);}
+  @media (max-width:1180px){ .rail{display:none;} }
+
+  /* ---------- hero ---------- */
+  #accueil{
+    padding-top:150px; padding-bottom:80px; background:var(--navy); color:var(--on-navy);
+    border-bottom:1px solid var(--navy-line);
+    background-image:none;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:start;}
+  @media (max-width:980px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero-logo{
+    width:100%; max-width:420px; height:auto; display:block; margin-bottom:32px;
+    filter:brightness(0) invert(1);
+  }
+
+  .hero-desc{font-size:clamp(16px,1.7vw,19px); color:var(--on-navy-sub); max-width:520px; margin-bottom:34px; line-height:1.6;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+
+  .pill-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .pill{
+    font-family:var(--font-mono); font-size:12px; color:var(--on-navy-sub);
+    border:1px solid var(--navy-line); padding:7px 12px; text-decoration:none; cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .pill:hover{border-color:var(--accent-on-navy); color:var(--accent-on-navy);}
+
+  .hero-aside{border:1px solid var(--navy-line); background:var(--navy-soft); padding:26px;}
+  .hero-aside dl{margin:0; display:flex; flex-direction:column; gap:0;}
+  .hero-aside dl > div{padding:20px 0;}
+  .hero-aside dl > div:first-child{padding-top:0;}
+  .hero-aside dl > div:last-child{padding-bottom:0;}
+  .hero-aside dl > div + div{border-top:1px solid var(--navy-line);}
+  .hero-aside dt{font-family:var(--font-mono); font-size:11px; color:var(--on-navy-sub); margin-bottom:6px;}
+  .hero-aside dd{margin:0; font-size:15px;}
+  .status-dot{display:inline-block; width:7px; height:7px; background:var(--accent); border-radius:50%; margin-right:8px; box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);}
+
+  /* ---------- cabinet ---------- */
+  .cabinet-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  @media (max-width:860px){ .cabinet-grid{grid-template-columns:1fr;} }
+  .mission-quote{
+    font-family:var(--font-display); font-size:clamp(21px,2.6vw,28px); font-weight:500;
+    line-height:1.35; padding-left:22px; border-left:2px solid var(--accent); margin:28px 0 32px;
+  }
+  .value-tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .value-tag{font-size:13.5px; border:1px solid var(--line-strong); padding:8px 14px;}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:8px;}
+  @media (max-width:760px){ .stat-grid{grid-template-columns:repeat(2,1fr);} }
+  .stat-cell{background:var(--bg); padding:24px 20px;}
+  .stat-num{font-family:var(--font-mono); font-size:clamp(26px,3vw,34px); color:var(--accent-ink);}
+  .stat-lab{font-size:12.5px; color:var(--sub); margin-top:6px;}
+  .stat-note{font-size:12px; color:var(--sub); margin-top:14px; font-style:italic;}
+
+  /* ---------- services ---------- */
+  .svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media (max-width:900px){ .svc-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .svc-grid{grid-template-columns:1fr;} }
+  .svc-card{background:var(--bg); padding:30px 26px; display:flex; flex-direction:column; gap:14px; scroll-margin-top:120px;}
+  .svc-icon{width:38px; height:38px; color:var(--accent-ink);}
+  .svc-card h3{font-size:18px;}
+  .svc-card p{color:var(--sub); font-size:14.5px; line-height:1.55;}
+  .svc-spec{font-family:var(--font-mono); font-size:11px; color:var(--accent-ink); border:1px solid var(--line-strong); align-self:flex-start; padding:3px 8px; margin-top:auto;}
+  .svc-tags{display:flex; flex-wrap:wrap; gap:6px; font-size:12px; color:var(--sub);}
+  .svc-tags span::after{content:"·"; margin-left:6px; color:var(--line-strong);}
+  .svc-tags span:last-child::after{content:"";}
+
+  /* ---------- secteurs ---------- */
+  .sect-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:860px){ .sect-grid{grid-template-columns:repeat(2,1fr);} }
+  .sect-card{border:1px solid var(--line); padding:18px 16px; font-size:14px;}
+  .sect-card b{display:block; font-family:var(--font-display); font-size:15.5px; margin-bottom:4px;}
+  .sect-card span{color:var(--sub); font-size:13px;}
+
+  /* ---------- methodologie ---------- */
+  .steps{position:relative; margin-top:12px;}
+  .steps::before{content:""; position:absolute; left:27px; top:6px; bottom:6px; width:1px; background:var(--line-strong);}
+  .step{display:grid; grid-template-columns:56px 1fr; gap:20px; padding:22px 0;}
+  .step-num{font-family:var(--font-mono); font-size:13px; color:var(--bg); background:var(--ink); width:56px; height:56px; display:flex; align-items:center; justify-content:center; z-index:1; align-self:start;}
+  :root[data-theme="dark"] .step-num{color:var(--navy);}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .step-num{color:var(--navy);}
+  }
+  .step h3{margin-bottom:6px; font-size:17px;}
+  .step p{color:var(--sub); font-size:14.5px; max-width:520px;}
+
+  /* ---------- realisations ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:900px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj-visual{
+    aspect-ratio:4/3; border:1px dashed var(--line-strong); display:flex; align-items:center; justify-content:center;
+    color:var(--sub); font-family:var(--font-mono); font-size:12px; margin-bottom:16px; background:var(--bg-panel-2);
+    overflow:hidden;
+  }
+  .proj-visual img{width:100%; height:100%; object-fit:cover;}
+  .proj-card h3{font-size:16.5px; margin-bottom:4px;}
+  .proj-meta{font-family:var(--font-mono); font-size:11.5px; color:var(--accent-ink); margin-bottom:10px;}
+  .proj-card ul{margin:0; padding-left:18px; font-size:13.5px; color:var(--sub); display:flex; flex-direction:column; gap:3px;}
+  .proj-note{margin-top:30px; font-size:13.5px; color:var(--sub);}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .cinfo dt{font-family:var(--font-mono); font-size:11px; color:var(--sub); margin-bottom:4px;}
+  .cinfo dd{margin:0 0 22px; font-size:16px;}
+  .cinfo a{text-decoration:none; border-bottom:1px solid var(--line-strong);}
+  .cinfo a:hover{border-color:var(--accent); color:var(--accent-ink);}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:560px){ .form-row{grid-template-columns:1fr;} }
+  label{font-size:12.5px; font-family:var(--font-mono); color:var(--sub); display:block; margin-bottom:6px;}
+  input, textarea{
+    width:100%; background:var(--bg); border:1px solid var(--line-strong); color:var(--ink);
+    padding:11px 12px; font-family:var(--font-body); font-size:14.5px;
+    transition:border-color .15s ease;
+  }
+  input:focus, textarea:focus{border-color:var(--accent); outline:none;}
+  textarea{resize:vertical; min-height:110px;}
+  .check-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px 14px;}
+  @media (max-width:640px){ .check-grid{grid-template-columns:repeat(2,1fr);} }
+  .check-item{display:flex; align-items:center; gap:8px; font-size:13.5px; cursor:pointer;}
+  .check-item input{width:auto;}
+  .form-msg{font-size:13.5px; padding:10px 0; display:none; color:var(--ok);}
+  .form-msg.show{display:block;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy); color:var(--on-navy-sub); padding:64px 0 28px;}
+  .foot-logo{width:200px; height:auto; display:block; margin-bottom:28px; filter:brightness(0) invert(1);}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; margin-bottom:48px;}
+  @media (max-width:760px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  footer h4{color:var(--on-navy); font-size:13px; font-family:var(--font-mono); font-weight:500; margin-bottom:16px;}
+  footer ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; font-size:14px;}
+  footer a{text-decoration:none;}
+  footer a:hover{color:var(--accent-on-navy);}
+  .foot-brand p{max-width:280px; font-size:13.5px; margin-top:10px;}
+  .foot-bottom{border-top:1px solid var(--navy-line); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px;}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#accueil">Aller au contenu</a>
+
+<header>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-links">
+        <a href="tel:+221771048447">+221 77 104 84 47</a>
+        <a href="mailto:contact@ecesarl.sn">contact@ecesarl.sn</a>
+      </div>
+      <div class="topbar-right">
+        <span>Dakar — Sénégal</span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème" title="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap navrow">
+    <a class="brand" href="#accueil" aria-label="ECE SARL — Accueil">
+      <img class="brand-mark" src="logo-ece-officiel.png" alt="ECE SARL — Safety First">
+      <span class="brand-text">
+        <span class="brand-name">ECE SARL</span>
+        <span class="brand-sub">ENERGIE CONCEPT ENGINEERING</span>
+      </span>
+    </a>
+    <nav class="primary" aria-label="Navigation principale">
+      <ul id="nav-links">
+        <li><a href="#accueil"><span class="idx">01</span>Accueil</a></li>
+        <li><a href="#cabinet"><span class="idx">02</span>Cabinet</a></li>
+        <li><a href="#services"><span class="idx">03</span>Services</a></li>
+        <li><a href="#realisations"><span class="idx">06</span>Réalisations</a></li>
+        <li><a href="#contact"><span class="idx">07</span>Contact</a></li>
+      </ul>
+      <a class="btn btn-primary" href="#contact">Demander une étude</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobilePanel">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <ul>
+    <li><a href="#accueil"><span class="idx">01</span>Accueil</a></li>
+    <li><a href="#cabinet"><span class="idx">02</span>Cabinet</a></li>
+    <li><a href="#services"><span class="idx">03</span>Services</a></li>
+    <li><a href="#secteurs"><span class="idx">04</span>Secteurs</a></li>
+    <li><a href="#methodologie"><span class="idx">05</span>Méthode</a></li>
+    <li><a href="#realisations"><span class="idx">06</span>Réalisations</a></li>
+    <li><a href="#contact"><span class="idx">07</span>Contact</a></li>
+  </ul>
+  <div class="mp-contact">
+    <span>contact@ecesarl.sn</span>
+    <span>+221 77 104 84 47</span>
+    <span>Dakar — Sénégal</span>
+  </div>
+</div>
+
+<nav class="rail" aria-label="Repères de section">
+  <a href="#accueil" data-sec="accueil"><span class="lab">Accueil</span><span class="dot"></span></a>
+  <a href="#cabinet" data-sec="cabinet"><span class="lab">Cabinet</span><span class="dot"></span></a>
+  <a href="#services" data-sec="services"><span class="lab">Services</span><span class="dot"></span></a>
+  <a href="#secteurs" data-sec="secteurs"><span class="lab">Secteurs</span><span class="dot"></span></a>
+  <a href="#methodologie" data-sec="methodologie"><span class="lab">Méthode</span><span class="dot"></span></a>
+  <a href="#realisations" data-sec="realisations"><span class="lab">Réalisations</span><span class="dot"></span></a>
+  <a href="#contact" data-sec="contact"><span class="lab">Contact</span><span class="dot"></span></a>
+</nav>
+
+<main>
+
+  <!-- 01 ACCUEIL -->
+  <section id="accueil" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title" class="sr-only">ECE SARL — Travaux, Études &amp; Expertise en électromécanique, énergie et sécurité</h1>
+
+          <img class="hero-logo" src="logo-ece-officiel.png" alt="ECE SARL — Safety First">
+
+        <p class="hero-desc">Nous accompagnons entreprises, promoteurs et maîtres d'ouvrage sur l'ensemble du cycle de vie de leurs installations techniques : du dimensionnement à la réalisation, jusqu'au suivi et à l'expertise.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-on-navy" href="#contact" style="border-color:var(--accent-on-navy); color:var(--accent-on-navy);">Demander une étude</a>
+          <a class="btn btn-on-navy" href="#services">Découvrir nos services</a>
+        </div>
+        <div class="pill-row">
+          <a class="pill" href="#electricite">Électricité HTA/BT</a>
+          <a class="pill" href="#hydraulique">Hydraulique</a>
+          <a class="pill" href="#plomberie">Plomberie</a>
+          <a class="pill" href="#climatisation">Froid &amp; Climatisation</a>
+          <a class="pill" href="#securite-electronique">Sécurité électronique</a>
+          <a class="pill" href="#securite-incendie">Sécurité incendie</a>
+        </div>
+      </div>
+      <aside class="hero-aside">
+        <dl>
+          <div>
+            <dt>STATUT</dt>
+            <dd><span class="status-dot" aria-hidden="true"></span>Disponible pour nouvelles études</dd>
+          </div>
+          <div>
+            <dt>LOCALISATION</dt>
+            <dd>Dakar, Sénégal — interventions Afrique de l'Ouest</dd>
+          </div>
+          <div>
+            <dt>DOMAINES</dt>
+            <dd>Électromécanique · Hydraulique · CVC · Sûreté &amp; sécurité</dd>
+          </div>
+          <div>
+            <dt>MISSIONS</dt>
+            <dd>Travaux · Études techniques · Expertise &amp; diagnostic</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 02 CABINET -->
+  <section id="cabinet" aria-labelledby="cabinet-title">
+    <div class="wrap">
+      <div class="section-num"><span class="tick"></span>02 — LE CABINET</div>
+      <div class="cabinet-grid">
+        <div>
+          <h2 class="h2" id="cabinet-title">Qui sommes-nous</h2>
+          <p class="mission-quote">Concevoir, réaliser et sécuriser des installations électromécaniques fiables, performantes et adaptées aux contraintes réelles du terrain.</p>
+          <p class="lede" style="margin-bottom:22px;">ECE SARL — Energie Concept Engineering — intervient sur l'ensemble de la chaîne technique d'un projet : étude et dimensionnement, réalisation des travaux, puis expertise et assistance jusqu'à la réception. Une même équipe suit le projet de bout en bout, de l'électricité HTA/BT à la sécurité incendie.</p>
+          <div class="value-tags">
+            <span class="value-tag">Expertise</span>
+            <span class="value-tag">Rigueur</span>
+            <span class="value-tag">Fiabilité</span>
+            <span class="value-tag">Sécurité</span>
+            <span class="value-tag">Innovation</span>
+            <span class="value-tag">Proximité</span>
+          </div>
+        </div>
+        <div>
+          <div class="stat-grid">
+            <div class="stat-cell"><div class="stat-num">42</div><div class="stat-lab">Projets réalisés</div></div>
+            <div class="stat-cell"><div class="stat-num">8</div><div class="stat-lab">Années d'expérience</div></div>
+            <div class="stat-cell"><div class="stat-num">6</div><div class="stat-lab">Pôles d'intervention</div></div>
+            <div class="stat-cell"><div class="stat-num">31</div><div class="stat-lab">Clients accompagnés</div></div>
+          </div>
+          <p class="stat-note">Chiffres de démonstration à remplacer par les données réelles du cabinet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SERVICES -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num"><span class="tick"></span>03 — NOS PÔLES D'INTERVENTION</div>
+          <h2 class="h2" id="services-title">Travaux, études &amp; expertise</h2>
+        </div>
+        <p class="lede">Six pôles techniques, une seule équipe de suivi — du bilan de puissance au dossier de réception.</p>
+      </div>
+
+      <div class="svc-grid">
+        <article class="svc-card" id="electricite">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M21 4 L11 22 H19 L17 36 L29 17 H21 L21 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Électricité HTA/BT</h3>
+          <p>Bilan de puissance, schémas et dimensionnement des installations, distribution, tableaux, protections, mise à la terre et éclairage.</p>
+          <div class="svc-tags"><span>Tableaux électriques</span><span>Protections</span><span>Éclairage</span></div>
+          <span class="svc-spec">HTA · BT</span>
+        </article>
+
+        <article class="svc-card" id="hydraulique">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 5 C14 15 9 20 9 26 a11 11 0 0 0 22 0 C31 20 26 15 20 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Hydraulique</h3>
+          <p>Étude de pompage, réseaux d'adduction, irrigation et stations de pompage : calcul de débit, hauteur manométrique et choix des équipements.</p>
+          <div class="svc-tags"><span>Pompage</span><span>Adduction d'eau</span><span>Irrigation</span></div>
+          <span class="svc-spec">Q · HMT</span>
+        </article>
+
+        <article class="svc-card" id="plomberie">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M14 19 V26 H30 V33" stroke="currentColor" stroke-width="1.6" fill="none"/><circle cx="30" cy="33" r="3" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Plomberie</h3>
+          <p>Réseaux sanitaires, alimentation en eau, évacuation des eaux usées et pluviales, choix et pose des équipements sanitaires.</p>
+          <div class="svc-tags"><span>Réseaux sanitaires</span><span>Évacuations</span><span>Équipements</span></div>
+          <span class="svc-spec">EU · EP</span>
+        </article>
+
+        <article class="svc-card" id="climatisation">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 V36 M8 11 L32 29 M32 11 L8 29" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Froid &amp; Climatisation</h3>
+          <p>Bilans thermiques, dimensionnement CVC, ventilation et traitement d'air pour bâtiments tertiaires, hôteliers et industriels.</p>
+          <div class="svc-tags"><span>Bilans thermiques</span><span>CVC</span><span>Ventilation</span></div>
+          <span class="svc-spec">kW frig.</span>
+        </article>
+
+        <article class="svc-card" id="securite-electronique">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="6" y="13" width="20" height="14" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M26 18 L34 13 V27 L26 22" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Sécurité électronique</h3>
+          <p>Vidéosurveillance, contrôle d'accès, détection d'intrusion et supervision centralisée des sites.</p>
+          <div class="svc-tags"><span>Vidéosurveillance</span><span>Contrôle d'accès</span><span>Détection</span></div>
+          <span class="svc-spec">CCTV</span>
+        </article>
+
+        <article class="svc-card" id="securite-incendie">
+          <svg class="svc-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4 C16 12 22 13 22 20 a6 6 0 1 1 -12 0 c0 -4 3 -6 3 -6 c-1 6 3 9 6 9 a4 4 0 0 0 4 -4 c0 -3 -3 -5 -3 -5 c0 5 -2 6 -3 6 a2 2 0 0 1 -2 -2 c0 -3 5 -7 5 -14Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Sécurité incendie</h3>
+          <p>Détection incendie, désenfumage, moyens d'extinction et mise en conformité réglementaire des établissements.</p>
+          <div class="svc-tags"><span>Détection</span><span>Désenfumage</span><span>Extinction</span></div>
+          <span class="svc-spec">SSI</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SECTEURS -->
+  <section id="secteurs" aria-labelledby="secteurs-title">
+    <div class="wrap">
+      <div class="section-num"><span class="tick"></span>04 — SECTEURS D'ACTIVITÉ</div>
+      <h2 class="h2" id="secteurs-title" style="margin-bottom:36px;">Des interventions transverses</h2>
+      <div class="sect-grid">
+        <div class="sect-card"><b>Industrie</b><span>Usines, lignes de production, équipements</span></div>
+        <div class="sect-card"><b>BTP</b><span>Bâtiments, immeubles, infrastructures</span></div>
+        <div class="sect-card"><b>Eau &amp; agriculture</b><span>Forages, irrigation, stations de pompage</span></div>
+        <div class="sect-card"><b>Énergie</b><span>Solaire, groupes électrogènes, distribution</span></div>
+        <div class="sect-card"><b>Hôtellerie</b><span>Hôtels, résidences, complexes touristiques</span></div>
+        <div class="sect-card"><b>Santé</b><span>Hôpitaux, cliniques, laboratoires</span></div>
+        <div class="sect-card"><b>Tertiaire</b><span>Bureaux, commerces, administrations</span></div>
+        <div class="sect-card"><b>Collectivités</b><span>Établissements et bâtiments publics</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 METHODOLOGIE -->
+  <section id="methodologie" aria-labelledby="methodo-title">
+    <div class="wrap">
+      <div class="section-num"><span class="tick"></span>05 — NOTRE MÉTHODE</div>
+      <h2 class="h2" id="methodo-title" style="margin-bottom:8px;">Du besoin à la réception</h2>
+      <p class="lede">Une progression claire, pensée pour rassurer le client à chaque étape du projet.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div><h3>Analyse du besoin</h3><p>Compréhension du contexte, des contraintes et des objectifs du client.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div><h3>Étude</h3><p>Collecte des données terrain et analyse technique approfondie.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div><h3>Conception</h3><p>Élaboration et comparaison des solutions techniques possibles.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div><h3>Dimensionnement</h3><p>Calcul et sélection précise des équipements et matériaux.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <div><h3>Travaux</h3><p>Réalisation, suivi de chantier et coordination des équipes.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">06</div>
+          <div><h3>Expertise &amp; suivi</h3><p>Réception, assistance technique et accompagnement dans la durée.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 REALISATIONS -->
+  <section id="realisations" aria-labelledby="real-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-num"><span class="tick"></span>06 — RÉALISATIONS</div>
+          <h2 class="h2" id="real-title">Projets sélectionnés</h2>
+        </div>
+        <p class="lede">Quelques références de démonstration pour donner vie au parcours de l'équipe.</p>
+      </div>
+      <div class="proj-grid">
+        <article class="tech-card proj-card">
+          <div class="proj-visual"><img src="poste-hta-1.webp" alt="Poste électrique HTA en intérieur"></div>
+          <h3>Extension HTA/BT d'une unité agroalimentaire</h3>
+          <p class="proj-meta">Industrie · Rufisque · 2024</p>
+          <ul>
+            <li>Étude électrique &amp; dimensionnement</li>
+            <li>Choix des équipements</li>
+            <li>Suivi des travaux</li>
+          </ul>
+        </article>
+        <article class="tech-card proj-card">
+          <div class="proj-visual"><img src="pompe.jpeg" alt="Installation de pompage avec moteurs et canalisations"></div>
+          <h3>Station de pompage et réseau d'irrigation</h3>
+          <p class="proj-meta">Eau &amp; agriculture · Thiès · 2023</p>
+          <ul>
+            <li>Étude de pompage</li>
+            <li>Dimensionnement des conduites</li>
+            <li>Mise en service</li>
+          </ul>
+        </article>
+        <article class="tech-card proj-card">
+          <div class="proj-visual"><img src="incendie.jpeg" alt="Extincteurs installés dans un couloir de bâtiment"></div>
+          <h3>Mise en conformité sécurité incendie d'un immeuble tertiaire</h3>
+          <p class="proj-meta">Tertiaire · Dakar · 2025</p>
+          <ul>
+            <li>Audit &amp; diagnostic</li>
+            <li>Mise en conformité SSI</li>
+            <li>Assistance à la réception</li>
+          </ul>
+        </article>
+      </div>
+      <!-- <p class="proj-note">Contenu fictif de démonstration : remplacez ces références par vos projets, photos et résultats avant publication.</p> -->
+    </div>
+  </section>
+
+  <!-- 07 CONTACT -->
+  <section id="contact" aria-labelledby="contact-title" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-num"><span class="tick"></span>07 — CONTACT</div>
+      <h2 class="h2" id="contact-title" style="margin-bottom:36px;">Un projet ? Parlons-en.</h2>
+      <div class="contact-grid">
+        <div class="cinfo">
+          <dl>
+            <dt>EMAIL</dt>
+            <dd><a href="mailto:contact@ecesarl.sn">contact@ecesarl.sn</a></dd>
+            <dt>TÉLÉPHONE</dt>
+            <dd><a href="tel:+221771048447">+221 77 104 84 47</a></dd>
+            <dt>LOCALISATION</dt>
+            <dd>Dakar, Sénégal<br><span style="font-size:13.5px; color:var(--sub);">Sipres, Zac Mbao TF 352 DP<br>Villa n°52, deuxième étage</span></dd>
+            <dt>HORAIRES</dt>
+            <dd>Lundi – Vendredi, 8h – 18h</dd>
+          </dl>
+        </div>
+        <form id="contactForm" action="https://formspree.io/f/maenwrek" method="POST" autocomplete="on">
+          <input type="hidden" name="_subject" value="Nouvelle demande depuis le site ECE SARL">
+          <div class="form-row">
+            <div><label for="f-nom">Nom complet *</label><input id="f-nom" name="nom" type="text" autocomplete="name" required></div>
+            <div><label for="f-entreprise">Entreprise</label><input id="f-entreprise" name="entreprise" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="form-row">
+            <div><label for="f-email">Email *</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div>
+            <label>Type de projet</label>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="type" value="Électricité"> Électricité</label>
+              <label class="check-item"><input type="checkbox" name="type" value="Hydraulique"> Hydraulique</label>
+              <label class="check-item"><input type="checkbox" name="type" value="Plomberie"> Plomberie</label>
+              <label class="check-item"><input type="checkbox" name="type" value="Climatisation"> Climatisation</label>
+              <label class="check-item"><input type="checkbox" name="type" value="Sécurité électronique"> Sécurité électro.</label>
+              <label class="check-item"><input type="checkbox" name="type" value="Sécurité incendie"> Sécurité incendie</label>
+            </div>
+          </div>
+          <div><label for="f-msg">Description du projet *</label><textarea id="f-msg" name="message" required></textarea></div>
+          <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary" id="formSubmit">Envoyer ma demande</button>
+            <p class="form-msg" id="formMsg" role="status" aria-live="polite">Votre demande est en cours d'envoi.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <!-- Signature complète du logo -->
+        <img class="foot-logo" src="logo-ece-officiel.png" alt="ECE SARL — Safety First">
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <p>Energie Concept Engineering — cabinet de travaux, études et expertise en électromécanique, énergie et sécurité du bâtiment.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#cabinet">Cabinet</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#realisations">Réalisations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#electricite">Électricité HTA/BT</a></li>
+          <li><a href="#hydraulique">Hydraulique</a></li>
+          <li><a href="#plomberie">Plomberie</a></li>
+          <li><a href="#climatisation">Froid &amp; Climatisation</a></li>
+          <li><a href="#securite-incendie">Sécurité incendie</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@ecesarl.sn">contact@ecesarl.sn</a></li>
+          <li><a href="tel:+221771048447">+221 77 104 84 47</a></li>
+          <li>Dakar, Sénégal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ECE SARL — Energie Concept Engineering</span>
+      <span>Mentions légales · Politique de confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* THEME TOGGLE */
+  var themeBtn = document.getElementById('themeToggle');
+  var rootEl = document.documentElement;
+  var stored = null;
+  try { stored = localStorage.getItem('ece-theme'); } catch(e){}
+  if (stored === 'dark' || stored === 'light') rootEl.setAttribute('data-theme', stored);
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function(){
+      var current = rootEl.getAttribute('data-theme');
+      if (!current) {
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        current = prefersDark ? 'dark' : 'light';
+      }
+      var next = current === 'dark' ? 'light' : 'dark';
+      rootEl.setAttribute('data-theme', next);
+      try { localStorage.setItem('ece-theme', next); } catch(e){}
+    });
+  }
+
+  /* MOBILE MENU */
+  var burger = document.getElementById('burgerBtn');
+  var panel = document.getElementById('mobilePanel');
+  function closePanel(){
+    panel.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('no-scroll');
+  }
+  function openPanel(){
+    panel.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    document.body.classList.add('no-scroll');
+  }
+  if (burger && panel) {
+    burger.addEventListener('click', function(){
+      if (panel.classList.contains('open')) closePanel();
+      else openPanel();
+    });
+    panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closePanel); });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+  }
+
+  /* SCROLL SPY */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var topLinks = Array.prototype.slice.call(document.querySelectorAll('nav.primary a'));
+  function setActive(id){
+    railLinks.forEach(function(a){ a.classList.toggle('active', a.dataset.sec === id); });
+    topLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if ('IntersectionObserver' in window && sections.length) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){ if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ obs.observe(s); });
+  }
+
+  /* REVEALS */
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('motion-ready');
+    var revealItems = Array.prototype.slice.call(document.querySelectorAll(
+      '.section-head, .tech-card, .svc-card, .sect-card, .step, .proj-card, .contact-grid'
+    ));
+    revealItems.forEach(function(item, index){
+      item.classList.add('reveal-item');
+      item.style.setProperty('--reveal-delay', Math.min(index % 6, 5) * 70 + 'ms');
+    });
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealItems.forEach(function(item){ revealObserver.observe(item); });
+  }
+
+  /* FORMULAIRE FORMSPREE */
+  var form = document.getElementById('contactForm');
+  var msg = document.getElementById('formMsg');
+  var submitBtn = document.getElementById('formSubmit');
+  if (form && msg && submitBtn) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+      msg.textContent = 'Votre demande est en cours d’envoi.';
+      msg.classList.add('show');
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(function(response){
+        if (!response.ok) throw new Error('Formspree request failed');
+        form.reset();
+        msg.textContent = 'Votre demande a bien été envoyée. Nous vous répondrons rapidement.';
+      }).catch(function(){
+        msg.textContent = 'L’envoi a échoué. Vérifiez votre connexion et réessayez.';
+      }).finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
